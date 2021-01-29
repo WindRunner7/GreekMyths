@@ -38,6 +38,12 @@ public class PegasusEntity extends HorseEntity {
 
     public PegasusEntity(EntityType<? extends HorseEntity> type, World worldIn) {
         super(type, worldIn);
+
+    }
+
+    protected void registerData() {
+        super.registerData();
+        this.dataManager.register(FLYINGSTATUS, (byte)0);
     }
 
     protected boolean wingsOut;
