@@ -31,9 +31,7 @@ import java.util.Random;
 
 
 public class PegasusEntity extends HorseEntity {
-    protected boolean flightBoost;
-    protected boolean flightBoosted;
-    private boolean isFlying;
+
     private static final DataParameter<Byte> FLYINGSTATUS = EntityDataManager.createKey(PegasusEntity.class, DataSerializers.BYTE);
 
     public PegasusEntity(EntityType<? extends HorseEntity> type, World worldIn) {
@@ -46,7 +44,6 @@ public class PegasusEntity extends HorseEntity {
         this.dataManager.register(FLYINGSTATUS, (byte)0);
     }
 
-    protected boolean wingsOut;
     protected float prevFlapAmountRearing;
     protected float flapAmountRearing;
     protected float prevFlapAmount;
@@ -75,7 +72,7 @@ public class PegasusEntity extends HorseEntity {
                     if (this.jumpPower > 0.1F && !this.inWater && !this.onGround) {
                         ModifiableAttributeInstance gravity = this.getAttribute(net.minecraftforge.common.ForgeMod.ENTITY_GRAVITY.get());
                         double d0 = gravity.getValue();
-                        flightBoost = true;
+                        setFlightBoost(true);
                         Vector3d vectorLook = this.getControllingPassenger().getLookVec();
                         vectorLook = (d0 > 1.0D ? vectorLook.normalize() : vectorLook).scale((double) this.jumpPower);
                         this.setMotion(this.getMotion().add(vectorLook));
@@ -206,17 +203,6 @@ public class PegasusEntity extends HorseEntity {
         }
     }
 
-    public static boolean canSpawnOn(final EntityType<? extends MobEntity> entity, final IWorld world,
-                                     final SpawnReason reason, final BlockPos pos, final Random rand) {
-
-        Optional<RegistryKey<Biome>> optional = world.func_242406_i(pos);
-        return (!Objects.equals(optional, Optional.of(Biomes.PLAINS)) ||
-                !Objects.equals(optional, Optional.of(Biomes.SUNFLOWER_PLAINS)) ||
-                !Objects.equals(optional, Optional.of(Biomes.SAVANNA)) ||
-                !Objects.equals(optional, Optional.of(Biomes.FLOWER_FOREST)));
-
-    }
-
     public boolean isHorseJumping() {
         return this.horseJumping;
     }
@@ -270,19 +256,21 @@ public class PegasusEntity extends HorseEntity {
                 this.flapAmountRearing = 1.0F;
             }
             //GreekMyths.LOGGER.info(flapAmount);
-        } else if (this.isHorseJumping()) {
-            this.flapAmountRearing += 0.05;
-            if (this.flapAmountRearing > 1.0F) {
-                this.flapAmountRearing = 1.0F;
-            }
-        } else {
+        }
+//        else if (this.isHorseJumping()) {
+//            this.flapAmountRearing += 0.05;
+//            if (this.flapAmountRearing > 1.0F) {
+//                this.flapAmountRearing = 1.0F;
+//            }
+//        }
+        else {
             this.flapAmountRearing = 0;
         }
         if (isFlying()) {
-            if (!wingsOut) {
+            if (!this.getWingsOut()) {
                 setRearing(true);
                 if (flapAmountRearing >= 0.85) {
-                    wingsOut = true;
+                    this.setWingsOut(true);
                     flapAmountRearing = 0;
                     setRearing(false);
                 }
@@ -291,24 +279,24 @@ public class PegasusEntity extends HorseEntity {
                 this.flapAmount += 0.05;
                 if (this.flapAmount > 0.7F) {
                     this.flapAmount = 0F;
-                    if (this.flightBoost && !flightBoosted) {
-                        flightBoosted = true;
+                    if (this.getFlightBoost()&& !this.getFlightBoosted()) {
+                        this.setFlightBoosted(true);
                     } else {
-                        this.flightBoosted = false;
-                        this.flightBoost = false;
+                        this.setFlightBoosted(false);
+                        this.setFlightBoost(false);
                     }
                 }
             }
         } else {
             setWatchableBoolean(1, false); //renderFlight = false;
-            if (wingsOut) {
+            if (this.getWingsOut()) {
                 if (flapAmountRearing == 0) {
                     this.setRearing(true);
                     this.flapAmountRearing = 0.15f;
                 } else if (flapAmountRearing >= 1) {
                     flapAmountRearing = 0;
                     setRearing(false);
-                    wingsOut = false;
+                    this.setWingsOut(false);
                 }
 
             } else {
@@ -326,22 +314,40 @@ public class PegasusEntity extends HorseEntity {
         setWatchableBoolean(2, isFlying); //
     }
 
-    @OnlyIn(Dist.CLIENT)
     public float getFlapAmountRearing(float p_110223_1_) {
         return MathHelper.lerp(p_110223_1_, this.prevFlapAmountRearing, this.flapAmountRearing);
     }
 
-    @OnlyIn(Dist.CLIENT)
     public float getFlapAmount(float p_110223_1_) {
         return MathHelper.lerp(p_110223_1_, this.prevFlapAmount, this.flapAmount);
     }
 
-    @OnlyIn(Dist.CLIENT)
+
     public boolean getFlightBoost() {
-        return flightBoost;
+        return getWatchableBoolean(4);
     }
 
-    @OnlyIn(Dist.CLIENT)
+    public void setFlightBoost(boolean boost) {
+        setWatchableBoolean(4, boost);
+    }
+
+    public boolean getFlightBoosted() {
+        return getWatchableBoolean(8);
+    }
+
+    public void setFlightBoosted(boolean boosted) {
+        setWatchableBoolean(8, boosted);
+    }
+
+    public boolean getWingsOut() {
+        return getWatchableBoolean(16);
+    }
+
+    public void setWingsOut(boolean wing) {
+        setWatchableBoolean(16, wing);
+    }
+
+
     public boolean isRenderFlight() {
         return getWatchableBoolean(1);
     }

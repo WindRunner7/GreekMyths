@@ -59,8 +59,9 @@ public class ModEntities {
     @SubscribeEvent
     public static void setupEntityHandler(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            GreekMyths.LOGGER.debug("TESTING");
             setupEntity((EntityType<MobEntity>)GREEKVILLAGER.get(),GreekVillagerEntity::getAttributes, GreekVillagerEntity::canSpawnOn);
-            setupEntity((EntityType<MobEntity>)HIPPOCAMPUS.get(), HippocampusEntity::getAttributes, HippocampusEntity::canSpawnOn);
+            setupEntity((EntityType<MobEntity>)HIPPOCAMPUS.get(), HippocampusEntity::getAttributes, HippocampusEntity::canHippocampusSpawnOn);
             setupEntity((EntityType<MobEntity>)PEGASUS.get(), PegasusEntity::getAttributes, PegasusEntity::canSpawnOn);
         });
     }

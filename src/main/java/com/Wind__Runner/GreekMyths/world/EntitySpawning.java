@@ -6,22 +6,18 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.util.concurrent.ITaskQueue;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = GreekMyths.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = GreekMyths.MOD_ID)
 public class EntitySpawning {
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
+    @SubscribeEvent
     public static void addBiomeSpawns(final BiomeLoadingEvent event) {
-        if(event.getCategory() == Biome.Category.OCEAN) {
-            addSpawns(event, ModEntities.HIPPOCAMPUS.get(), 100, 1, 2);
-        }
+        addSpawns(event, ModEntities.HIPPOCAMPUS.get(), 100, 1, 2);
         addSpawns(event, ModEntities.GREEKVILLAGER.get(), 100, 1, 3);
         addSpawns(event, ModEntities.PEGASUS.get(), 100, 1, 3);
     }

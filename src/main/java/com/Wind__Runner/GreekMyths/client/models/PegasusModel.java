@@ -236,12 +236,10 @@ public class PegasusModel<T extends PegasusEntity> extends AgeableModel<T> {
         this.head.rotateAngleX = ((float) Math.PI / 6F) + f4;
         if(entityIn.isRenderFlight()) { //Rotate Body and head based on direction
             this.body.rotateAngleX = f2 * ((float)Math.PI / 180F);
-            this.head.rotationPointY = body.rotationPointY - MathHelper.cos(1.18f + f2 * ((float)Math.PI / 180F)) * 18.38f;
-            this.head.rotationPointZ = body.rotationPointZ - MathHelper.sin(1.18f + f2 * ((float)Math.PI / 180F)) * 18.38f;
-//            this.field_228264_h_.rotationPointY = body.rotationPointY + MathHelper.cos(0.2f + f2 * ((float)Math.PI / 180F)) * 15.3f;
-//            this.field_228264_h_.rotationPointZ = body.rotationPointZ - MathHelper.sin(0.2f + f2 * ((float)Math.PI / 180F)) * 15.3f;
-//            this.field_228265_i_.rotationPointY = this.field_228264_h_.rotationPointY;
-//            this.field_228265_i_.rotationPointZ = this.field_228264_h_.rotationPointZ;
+            this.head.rotationPointY = body.rotationPointY + MathHelper.cos((float) Math.PI + 1.18f + (f2 * ((float)Math.PI / 180F))) * 18.38f;
+            this.head.rotationPointZ = body.rotationPointZ + MathHelper.sin((float) Math.PI + 1.18f + (f2 * ((float)Math.PI / 180F))) * 18.38f;
+            this.field_228264_h_.rotationPointY = body.rotationPointY + MathHelper.sin((float) Math.PI - 0.2f - (f2 * ((float)Math.PI / 180F))) * 15.3f;
+            this.field_228264_h_.rotationPointZ = body.rotationPointZ + MathHelper.cos((float) Math.PI - 0.2f - (f2 * ((float)Math.PI / 180F))) * 15.3f;
         }
         else {
             this.body.rotateAngleX = 0;
@@ -249,9 +247,9 @@ public class PegasusModel<T extends PegasusEntity> extends AgeableModel<T> {
             this.head.rotationPointZ = rearingAmount * -4.0F + grassEatingAmount * -12.0F + (1.0F - Math.max(rearingAmount, grassEatingAmount)) * this.head.rotationPointZ;
             this.field_228264_h_.rotationPointY = 2.0F * rearingAmount + 14.0F * negRearingAmount;
             this.field_228264_h_.rotationPointZ = -6.0F * rearingAmount - 10.0F * negRearingAmount;
-            this.field_228265_i_.rotationPointY = this.field_228264_h_.rotationPointY;
-            this.field_228265_i_.rotationPointZ = this.field_228264_h_.rotationPointZ;
         }
+        this.field_228265_i_.rotationPointY = this.field_228264_h_.rotationPointY;
+        this.field_228265_i_.rotationPointZ = this.field_228264_h_.rotationPointZ;
         float f10 = entityIn.isInWater() ? 0.2F : 1.0F;
         float f11 = MathHelper.cos(f10 * limbSwing * 0.6662F + (float) Math.PI);
         float f12 = f11 * 0.8F * limbSwingAmount;
@@ -277,7 +275,7 @@ public class PegasusModel<T extends PegasusEntity> extends AgeableModel<T> {
         } else {
             this.field_217133_j.rotateAngleY = 0.0F;
         }
-        if (entityIn.isRearing() || entityIn.isHorseJumping()) {
+        if (entityIn.isRearing()) {
             if (flapRearingAmount < 0.15) {
                 setRotateAngle(WingLeftMain, (0 - 35f + (200 * flapRearingAmount)) * (float) Math.PI / 180F, (float) (0 - 70f + (flapRearingAmount * 460)) * (float) Math.PI / 180F, (0 - 65f + (400f * flapRearingAmount)) * (float) Math.PI / 180F);
                 setRotateAngle(WingRightMain, (0 - 35f + (200 * flapRearingAmount)) * (float) Math.PI / 180F, (float) (70f - (flapRearingAmount * 460)) * (float) Math.PI / 180F, (65f - (400f * flapRearingAmount)) * (float) Math.PI / 180F);
@@ -323,7 +321,7 @@ public class PegasusModel<T extends PegasusEntity> extends AgeableModel<T> {
         this.field_228267_k_.showModel = flag1;
         this.field_228268_l_.showModel = flag1;
         this.field_228269_m_.showModel = flag1;
-        this.body.rotationPointY = flag1 ? 10.8F : 0.0F;
+        this.body.rotationPointY = flag1 ? 10.8F : 11F;
     }
 
     /**

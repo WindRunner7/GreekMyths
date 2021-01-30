@@ -39,17 +39,23 @@ public class PegasusEntityRender <T extends PegasusEntity, M extends PegasusMode
         this.scale = scaleIn;
     }
 
+    @Override
+    public void render(PegasusEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+        this.entityModel.setLivingAnimations(entityIn, entityIn.limbSwing, entityIn.limbSwingAmount, partialTicks);
+        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
+    }
+
     /**
      * Returns the location of an entity's texture.
      */
-    public ResourceLocation getEntityTexture(HorseEntity entity) {
+    public ResourceLocation getEntityTexture(PegasusEntity entity) {
         return field_239383_a_.get(entity.func_234239_eK_());
     }
-
-    @Override
-    public ResourceLocation getEntityTexture(PegasusEntity entity) {
-        return new ResourceLocation(GreekMyths.MOD_ID, "textures/entity/pegasus_entity.png");
-    }
+//
+//    @Override
+//    public ResourceLocation getEntityTexture(PegasusEntity entity) {
+//        return new ResourceLocation(GreekMyths.MOD_ID, "textures/entity/pegasus_entity.png");
+//    }
 
     public static class RenderFactory implements IRenderFactory {
 

@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.GuardianEntity;
+import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.DolphinEntity;
 import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.passive.PigEntity;
@@ -29,6 +30,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -53,23 +55,14 @@ public class HippocampusEntity extends DolphinEntity implements IRideable, IEqui
         return this.isInWater() ? SoundEvents.ENTITY_SKELETON_HORSE_AMBIENT_WATER : SoundEvents.ENTITY_HORSE_AMBIENT;
     }
 
-//Mostly from Dolphin Class
-    public static boolean canSpawnOn(final EntityType<? extends MobEntity> entity, final IWorld world,
+    public static boolean canHippocampusSpawnOn(final EntityType<? extends MobEntity> entity, final IWorld world,
                                      final SpawnReason reason, final BlockPos pos, final Random rand) {
-        if (pos.getY() > 25) {
-            Optional<RegistryKey<Biome>> optional = world.func_242406_i(pos);
-            return (!Objects.equals(optional, Optional.of(Biomes.OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.DEEP_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.WARM_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.DEEP_WARM_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.LUKEWARM_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.DEEP_LUKEWARM_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.COLD_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.DEEP_COLD_OCEAN)) ||
-                    !Objects.equals(optional, Optional.of(Biomes.DEEP_OCEAN))) && world.getFluidState(pos).isTagged(FluidTags.WATER);
-        } else {
+        if (pos.getY() <= 25 || pos.getY() >= world.getSeaLevel()) {
             return false;
         }
+
+        RegistryKey<Biome> biome = world.func_242406_i(pos).orElse(Biomes.PLAINS);
+        return (BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN)) && world.getFluidState(pos).isTagged(FluidTags.WATER);
     }
 
 
