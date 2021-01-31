@@ -2,9 +2,14 @@ package com.Wind__Runner.GreekMyths;
 
 import com.Wind__Runner.GreekMyths.client.renders.ModRenderRegistry;
 import com.Wind__Runner.GreekMyths.config.Config;
+import com.Wind__Runner.GreekMyths.entities.GreekVillagerEntity;
+import com.Wind__Runner.GreekMyths.entities.HippocampusEntity;
+import com.Wind__Runner.GreekMyths.entities.PegasusEntity;
 import com.Wind__Runner.GreekMyths.init.ModItems;
 import com.Wind__Runner.GreekMyths.init.Registration;
 import cpw.mods.modlauncher.EnumerationHelper;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -49,8 +54,6 @@ public class GreekMyths {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
-
-
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
