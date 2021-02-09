@@ -5,6 +5,7 @@ import com.Wind__Runner.GreekMyths.init.ModItems;
 import com.Wind__Runner.GreekMyths.init.ModTags;
 import net.minecraft.data.*;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.common.brewing.BrewingRecipe;
 
 import java.util.function.Consumer;
 
@@ -32,6 +33,13 @@ public class ModRecipesProvider extends RecipeProvider {
                 .patternLine("###")
                 .patternLine("###")
                 .addCriterion("has_item", hasItem(ModTags.Items.ORES_SILVER))
+                .build(consumer);
+        ShapedRecipeBuilder.shapedRecipe(ModBlocks.COPPER_BLOCK.get())
+                .key('#', ModItems.COPPER_INGOT.get())
+                .patternLine("###")
+                .patternLine("###")
+                .patternLine("###")
+                .addCriterion("has_item", hasItem(ModTags.Items.ORES_COPPER))
                 .build(consumer);
         ShapedRecipeBuilder.shapedRecipe(ModItems.GREEK_ARMOR_HELMET.get())
                 .key('#', ModItems.SILVER_INGOT.get())
@@ -65,6 +73,9 @@ public class ModRecipesProvider extends RecipeProvider {
     private void smeltingRecipes(Consumer<IFinishedRecipe> consumer) {
         CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModBlocks.SILVER_ORE.get().asItem()), ModItems.SILVER_INGOT.get(), 0.35F, 200)
                 .addCriterion("has_item", hasItem(ModTags.Items.ORES_SILVER))
+                .build(consumer);
+        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModBlocks.COPPER_ORE.get().asItem()), ModItems.COPPER_INGOT.get(), 0.35F, 200)
+                .addCriterion("has_item", hasItem(ModTags.Items.ORES_COPPER))
                 .build(consumer);
     }
 }

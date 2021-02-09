@@ -13,6 +13,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> SILVER_INGOT = Registration.ITEMS.register("silver_ingot", () ->
             new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+    public static final RegistryObject<Item> COPPER_INGOT = Registration.ITEMS.register("copper_ingot", () ->
+            new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
 
     public static final RegistryObject<Item> GREEK_ARMOR_HELMET = Registration.ITEMS.register("greekarmor_helmet", () ->
             new GreekArmor(EquipmentSlotType.HEAD, new Item.Properties().group(GreekMyths.ITEM_GROUP)));

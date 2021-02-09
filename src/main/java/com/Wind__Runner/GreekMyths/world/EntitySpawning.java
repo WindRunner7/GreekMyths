@@ -18,7 +18,7 @@ public class EntitySpawning {
     @SubscribeEvent
     public static void addBiomeSpawns(final BiomeLoadingEvent event) {
         addSpawns(event, ModEntities.HIPPOCAMPUS.get(), 100, 1, 2);
-        addSpawns(event, ModEntities.GREEKVILLAGER.get(), 100, 1, 3);
+        //addSpawns(event, ModEntities.GREEKVILLAGER.get(), 100, 1, 3);
         addSpawns(event, ModEntities.PEGASUS.get(), 100, 1, 3);
     }
 

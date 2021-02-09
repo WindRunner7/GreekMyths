@@ -1,18 +1,25 @@
 package com.Wind__Runner.GreekMyths.structures;
 
 import com.Wind__Runner.GreekMyths.GreekMyths;
+import com.Wind__Runner.GreekMyths.entities.GreekSoldierEntity;
+import com.Wind__Runner.GreekMyths.init.ModEntities;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
@@ -20,10 +27,14 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.Level;
 
 import java.util.List;
 
+@Mod.EventBusSubscriber(modid = GreekMyths.MOD_ID)
 public class GreekCampStructure extends Structure<NoFeatureConfig> {
     public GreekCampStructure(Codec<NoFeatureConfig> codec) {
         super(codec);
@@ -69,25 +80,19 @@ public class GreekCampStructure extends Structure<NoFeatureConfig> {
      * have to manually implement spawning for them. Stick with Forge's Default form
      * as it is easier to use that.
      */
-//    private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-//            new MobSpawnInfo.Spawners(EntityType.ILLUSIONER, 100, 4, 9),
-//            new MobSpawnInfo.Spawners(EntityType.VINDICATOR, 100, 4, 9)
-//    );
-//
-//    @Override
-//    public List<MobSpawnInfo.Spawners> getDefaultSpawnList() {
-//        return STRUCTURE_MONSTERS;
-//    }
 
 //    private static final List<MobSpawnInfo.Spawners> STRUCTURE_CREATURES = ImmutableList.of(
-//            new MobSpawnInfo.Spawners(EntityType.SHEEP, 30, 10, 15),
-//            new MobSpawnInfo.Spawners(EntityType.RABBIT, 100, 1, 2)
+//            new MobSpawnInfo.Spawners(ModEntities.GREEKSOLDIER.get(), 100, 4, 8)
 //    );
 //
-//    @Override
-//    public List<MobSpawnInfo.Spawners> getDefaultCreatureSpawnList() {
-//        return STRUCTURE_CREATURES;
-//    }
+
+    @Override
+    public boolean getDefaultRestrictsSpawnsToInside() {
+        return false;
+    }
+
+
+
 
 
     /*
@@ -116,7 +121,8 @@ public class GreekCampStructure extends Structure<NoFeatureConfig> {
 //    @Override
 //    protected boolean func_230363_a_(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig featureConfig) {
 //        int landHeight = chunkGenerator.getNoiseHeight(chunkX << 4, chunkZ << 4, Heightmap.Type.WORLD_SURFACE_WG);
-//        return landHeight > 100;
+////        return landHeight > 100;
+//        return true;
 //    }
 
 
@@ -131,7 +137,6 @@ public class GreekCampStructure extends Structure<NoFeatureConfig> {
         @Override
         public void func_230364_a_(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
 
-            GreekMyths.LOGGER.log(Level.DEBUG, "TESTING FAOUR GREEK CAMP");
             // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
             int x = (chunkX << 4) + 7;
             int z = (chunkZ << 4) + 7;
@@ -142,6 +147,7 @@ public class GreekCampStructure extends Structure<NoFeatureConfig> {
              * structure will spawn at terrain height instead. Set that parameter to false to
              * force the structure to spawn at blockpos's Y value instead. You got options here!
              */
+
             BlockPos blockpos = new BlockPos(x, 0, z);
 
             /*
@@ -200,8 +206,8 @@ public class GreekCampStructure extends Structure<NoFeatureConfig> {
             //
             // By lifting the house up by 1 and lowering the bounding box, the land at bottom of house will now be
             // flush with the surrounding terrain without blocking off the doorstep.
-            this.components.forEach(piece -> piece.offset(0, 1, 0));
-            this.components.forEach(piece -> piece.getBoundingBox().minY -= 1);
+//            this.components.forEach(piece -> piece.offset(0, 1, 0));
+//            this.components.forEach(piece -> piece.getBoundingBox().minY -= 1);
 
 
             // Sets the bounds of the structure once you are finished.

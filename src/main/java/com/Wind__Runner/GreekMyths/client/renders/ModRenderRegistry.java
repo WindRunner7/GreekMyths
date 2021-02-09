@@ -18,5 +18,6 @@ public class ModRenderRegistry {
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.GREEKVILLAGER.get(), new GreekVillagerEntityRender.RenderFactory());
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.HIPPOCAMPUS.get(), new HippocampusEntityRender.RenderFactory());
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.PEGASUS.get(), new PegasusEntityRender.RenderFactory());
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.GREEKSOLDIER.get(), new GreekSoldierEntityRender.RenderFactory());
     }
 }

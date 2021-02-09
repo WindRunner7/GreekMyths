@@ -17,9 +17,20 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("silver_block", modLoc("block/silver_block"));
         withExistingParent("silver_ore", modLoc("block/silver_ore"));
 
+        withExistingParent("copper_block", modLoc("block/copper_block"));
+        withExistingParent("copper_ore", modLoc("block/copper_ore"));
+
+        withExistingParent("lime_stone", modLoc("block/lime_stone"));
+        withExistingParent("lime_stone_bricks", modLoc("block/lime_stone_bricks"));
+        withExistingParent("lime_stone_pillar", modLoc("block/lime_stone_pillar"));
+        withExistingParent("lime_stone_brick_stairs", modLoc("block/lime_stone_brick_stairs"));
+        withExistingParent("lime_stone_brick_slab", modLoc("block/lime_stone_brick_slab"));
+        wallInventory("lime_stone_brick_wall", modLoc("block/lime_stone_bricks"));
+
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 
         builder(itemGenerated, "silver_ingot");
+        builder(itemGenerated, "copper_ingot");
 
         builder(itemGenerated, "greekarmor_helmet");
         builder(itemGenerated, "greekarmor_chestplate");

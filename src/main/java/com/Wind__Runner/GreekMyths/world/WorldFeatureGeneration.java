@@ -21,6 +21,10 @@ public final class WorldFeatureGeneration {
         public static final ConfiguredFeature<?, ?> ORE_VEINS_SILVER = Feature.ORE.withConfiguration(
                 new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
                         ModBlocks.SILVER_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(OreGenConfig.silver_ore_chance.get());
+
+        public static final ConfiguredFeature<?, ?> ORE_VEINS_COPPER = Feature.ORE.withConfiguration(
+                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
+                        ModBlocks.COPPER_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(OreGenConfig.copper_ore_chance.get());
     }
 
     private static void registerConfiguredFeature(String name, ConfiguredFeature<?, ?> configuredFeature) {
@@ -39,13 +43,16 @@ public final class WorldFeatureGeneration {
         } else if (biome.getCategory() == Biome.Category.THEEND) {
 
         } else {
-            addSilverOre(biome);
+            addOverWorldOres(biome);
         }
     }
 
-    private static void addSilverOre(BiomeLoadingEvent biome) {
+    private static void addOverWorldOres(BiomeLoadingEvent biome) {
         biome.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_VEINS_SILVER);
+        biome.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_VEINS_COPPER);
     }
+
+
 
 
 }

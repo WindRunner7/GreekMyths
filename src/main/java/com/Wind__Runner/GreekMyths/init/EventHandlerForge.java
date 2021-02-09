@@ -2,10 +2,13 @@ package com.Wind__Runner.GreekMyths.init;
 
 import com.Wind__Runner.GreekMyths.GreekMyths;
 import com.Wind__Runner.GreekMyths.entities.PegasusEntity;
+import com.Wind__Runner.GreekMyths.structures.GreekCampStructure;
 import com.Wind__Runner.GreekMyths.structures.ModConfiguredStructures;
 import com.Wind__Runner.GreekMyths.structures.ModStructures;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.FlatChunkGenerator;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
@@ -16,6 +19,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -80,6 +84,17 @@ public class EventHandlerForge {
             // putIfAbsent so people can override the spacing with dimension datapacks themselves if they wish to customize spacing more precisely per dimension.
             tempMap.putIfAbsent(ModStructures.GREEK_CAMP.get(), DimensionStructuresSettings.field_236191_b_.get(ModStructures.GREEK_CAMP.get()));
             serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
+        }
+    }
+
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void addStructureSpawnList(final StructureSpawnListGatherEvent event){
+        if(event.getStructure() instanceof GreekCampStructure) {
+            event.addEntitySpawn(ModEntities.MOD_FREINDLY_SOLDIER, new MobSpawnInfo.Spawners(ModEntities.GREEKSOLDIER.get(), 1000, 2, 8));
+            event.addEntitySpawn(ModEntities.MOD_FREINDLY, new MobSpawnInfo.Spawners(ModEntities.GREEKVILLAGER.get(), 1000, 2, 8));
+            GreekMyths.LOGGER.debug(event.getEntitySpawns(ModEntities.MOD_FREINDLY_SOLDIER).toString());
+            GreekMyths.LOGGER.debug(event.getEntitySpawns(ModEntities.MOD_FREINDLY).toString());
         }
     }
 }

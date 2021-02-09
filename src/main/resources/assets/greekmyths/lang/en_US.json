@@ -1,9 +1,26 @@
 {
   "item.greekmyths.silver_ingot":"Silver Ingot",
+  "item.greekmyths.copper_ingot":"Copper Ingot",
   "item.greekmyths.greekarmor_helmet":"Greek Helmet",
   "item.greekmyths.greekarmor_chestplate":"Greek Chestplate",
   "item.greekmyths.greekarmor_boots":"Greek Leggings",
   "item.greekmyths.greekarmor_leggings":"Greek Boots",
+  "item.greekmyths.mythicarmor_helmet":"Mythic Helmet",
+  "item.greekmyths.mythicarmor_chestplate":"Mythic Chestplate",
+  "item.greekmyths.mythicarmor_boots":"Mythic Leggings",
+  "item.greekmyths.mythicarmor_leggings":"Mythic Boots",
   "block.greekmyths.silver_ore":"Silver Ore",
-  "block.greekmyths.silver_block":"Silver Block"
+  "block.greekmyths.silver_block":"Silver Block",
+  "block.greekmyths.copper_ore":"Copper Ore",
+  "block.greekmyths.copper_block":"Copper Block",
+  "block.greekmyths.lime_stone":"Limestone",
+  "block.greekmyths.lime_stone_bricks":"Limestone Bricks",
+  "block.greekmyths.lime_stone_pillar":"Limestone Pillar",
+  "block.greekmyths.lime_stone_brick_stairs":"Limestone Brick Stairs",
+  "block.greekmyths.lime_stone_brick_wall":"Limestone Brick Wall",
+  "block.greekmyths.lime_stone_brick_slab":"Limestone Brick Slab",
+  "entity.greekmyths.greekvillager_entity":"Greek Villager",
+  "entity.greekmyths.hippocampus_entity":"Hippocampus",
+  "entity.greekmyths.pegasus_entity":"Pegasus",
+  "itemGroup.greekmyths":"Greek Mythos"
 }

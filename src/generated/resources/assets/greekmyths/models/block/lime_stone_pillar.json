@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "greekmyths:block/lime_stone_pillar",
+    "end": "greekmyths:block/lime_stone_pillar_top"
+  }
+}
