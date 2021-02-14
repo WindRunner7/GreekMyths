@@ -14,6 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 public class GreekVillagerModel extends PlayerModel<GreekVillagerEntity> {
 
     public GreekVillagerModel() {
-        super(0, false);
+        super(0, true);
     }
 }

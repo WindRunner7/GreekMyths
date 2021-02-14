@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "greekmyths:lime_stone"
+  },
+  "result": "greekmyths:lime_stone_brick_slab",
+  "count": 2
+}

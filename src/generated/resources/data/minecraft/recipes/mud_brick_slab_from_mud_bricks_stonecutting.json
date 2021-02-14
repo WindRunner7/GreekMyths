@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "greekmyths:mud_bricks"
+  },
+  "result": "greekmyths:mud_brick_slab",
+  "count": 2
+}

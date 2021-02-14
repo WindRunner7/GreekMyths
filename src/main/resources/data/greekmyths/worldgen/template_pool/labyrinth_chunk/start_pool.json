@@ -1,0 +1,15 @@
+{
+  "name": "greekmyths:labyrinth_chunk/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "greekmyths:labyrinth/labyrinth_chunk_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

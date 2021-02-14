@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "greekmyths:lime_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "greekmyths:lime_stone_brick_slab",
+    "count": 6
+  }
+}

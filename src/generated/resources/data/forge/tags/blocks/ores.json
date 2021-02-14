@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#forge:ores/silver",
-    "#forge:ores/copper"
+    "#forge:ores/copper",
+    "#forge:ores/tin"
   ]
 }

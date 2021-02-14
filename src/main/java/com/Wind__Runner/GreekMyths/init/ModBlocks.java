@@ -10,15 +10,21 @@ import net.minecraftforge.fml.RegistryObject;
 import java.util.function.Supplier;
 
 public class ModBlocks {
+    public static final RegistryObject<Block> TIN_ORE = register("tin_ore", () ->
+            new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).harvestLevel(2).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TIN_BLOCK = register("tin_block", () ->
+            new Block(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(3, 10).sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> BRONZE_BLOCK = register("bronze_block", () ->
+            new Block(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(3, 10).sound(SoundType.METAL)));
+
     public static final RegistryObject<Block> SILVER_ORE = register("silver_ore", () ->
             new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).harvestLevel(2).sound(SoundType.STONE)));
-
     public static final RegistryObject<Block> SILVER_BLOCK = register("silver_block", () ->
             new Block(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(3, 10).sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> COPPER_ORE = register("copper_ore", () ->
             new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).harvestLevel(2).sound(SoundType.STONE)));
-
     public static final RegistryObject<Block> COPPER_BLOCK = register("copper_block", () ->
             new Block(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(3, 10).sound(SoundType.METAL)));
 
@@ -33,6 +39,16 @@ public class ModBlocks {
     public static final RegistryObject<SlabBlock> LIMESTONE_BRICK_SLAB = register("lime_stone_brick_slab", () ->
             new SlabBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).sound(SoundType.STONE)));
     public static final RegistryObject<WallBlock> LIMESTONE_BRICK_WALL = register("lime_stone_brick_wall", () ->
+            new WallBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).sound(SoundType.STONE)));
+
+
+    public static final RegistryObject<Block> MUD_BRICKS = register("mud_bricks", () ->
+            new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).sound(SoundType.STONE)));
+    public static final RegistryObject<StairsBlock> MUD_BRICK_STAIRS = register("mud_brick_stairs", () ->
+            new StairsBlock(() -> MUD_BRICKS.get().getDefaultState(), AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
+    public static final RegistryObject<SlabBlock> MUD_BRICK_SLAB = register("mud_brick_slab", () ->
+            new SlabBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).sound(SoundType.STONE)));
+    public static final RegistryObject<WallBlock> MUD_BRICK_WALL = register("mud_brick_wall", () ->
             new WallBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3, 10).sound(SoundType.STONE)));
 
 

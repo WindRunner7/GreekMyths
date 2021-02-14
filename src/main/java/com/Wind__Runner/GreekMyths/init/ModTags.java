@@ -14,8 +14,9 @@ public class ModTags {
         public static final ITag.INamedTag<Block> STORAGE_BLOCKS_SILVER = forge("storage_blocks/silver");
         public static final ITag.INamedTag<Block> ORES_COPPER = forge("ores/copper");
         public static final ITag.INamedTag<Block> STORAGE_BLOCKS_COPPER = forge("storage_blocks/copper");
-
-        public static final ITag.INamedTag<Block> FENCE_LIMESTONE_BRICK_WALL = forge("fences/lime_stone_brick_wall");
+        public static final ITag.INamedTag<Block> ORES_TIN = forge("ores/tin");
+        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_TIN = forge("storage_blocks/tin");
+        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_BRONZE = forge("storage_blocks/bronze");
 
         private static ITag.INamedTag<Block> forge(String path) {
             return BlockTags.makeWrapperTag(new ResourceLocation("forge", path).toString());
@@ -32,10 +33,15 @@ public class ModTags {
         public static final ITag.INamedTag<Item> STORAGE_BLOCKS_SILVER = forge("storage_blocks/silver");
         public static final ITag.INamedTag<Item> ORES_COPPER = forge("ores/copper");
         public static final ITag.INamedTag<Item> STORAGE_BLOCKS_COPPER = forge("storage_blocks/copper");
+        public static final ITag.INamedTag<Item> ORES_TIN = forge("ores/tin");
+        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_TIN = forge("storage_blocks/tin");
+        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_BRONZE = forge("storage_blocks/bronze");
 
         //Items
         public static final ITag.INamedTag<Item> INGOT_SILVER = forge("ingot/silver");
         public static final ITag.INamedTag<Item> INGOT_COPPER = forge("ingot/copper");
+        public static final ITag.INamedTag<Item> INGOT_TIN = forge("ingot/tin");
+        public static final ITag.INamedTag<Item> INGOT_BRONZE = forge("ingot/bronze");
 
         //Armor
 

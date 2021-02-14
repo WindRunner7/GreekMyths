@@ -1,0 +1,25 @@
+{
+  "name": "greekmyths:greek_camp/fire_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "greekmyths:greek_camp/greek_camp_large_fire",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+          "weight": 1,
+          "element": {
+            "location": "greekmyths:greek_camp/greek_camp_small_fire",
+            "processors": "minecraft:empty",
+            "projection": "rigid",
+            "element_type": "minecraft:single_pool_element"
+          }
+        }
+  ]
+}

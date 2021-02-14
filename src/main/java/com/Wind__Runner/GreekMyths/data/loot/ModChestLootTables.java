@@ -10,6 +10,7 @@ import java.util.function.BiConsumer;
 
 public class ModChestLootTables extends ChestLootTables {
     public static final ResourceLocation CHESTS_GREEK_CAMP = register("greekmyths:chests/greek_camp");
+    public static final ResourceLocation CHESTS_LABYRINTH = register("greekmyths:chests/labyrinth");
 
     private static ResourceLocation register(String id) {
         return new ResourceLocation(id);
@@ -19,6 +20,7 @@ public class ModChestLootTables extends ChestLootTables {
     public void accept(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
         LootTable.Builder builder = LootTable.builder();
         consumer.accept(CHESTS_GREEK_CAMP, addGreekLoot(builder));
+        consumer.accept(CHESTS_LABYRINTH, addGreekLoot(builder));
 
     }
 

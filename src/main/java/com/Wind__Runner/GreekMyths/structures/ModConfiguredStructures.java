@@ -17,6 +17,7 @@ public class ModConfiguredStructures {
      * Static instance of our structure so we can reference it and add it to biomes easily.
      */
     public static StructureFeature<?, ?> CONFIGURED_GREEK_CAMP = ModStructures.GREEK_CAMP.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static StructureFeature<?, ?> CONFIGURED_LABYRINTH_CHUNK = ModStructures.LABYRINTH_CHUNK.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
 
     /**
      * Registers the configured structure which is what gets added to the biomes.
@@ -28,6 +29,7 @@ public class ModConfiguredStructures {
     public static void registerConfiguredStructures() {
         Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
         Registry.register(registry, new ResourceLocation(GreekMyths.MOD_ID, "configured_greek_camp"), CONFIGURED_GREEK_CAMP);
+        Registry.register(registry, new ResourceLocation(GreekMyths.MOD_ID, "configured_labyrinth_chunk"), CONFIGURED_LABYRINTH_CHUNK);
         GreekMyths.LOGGER.log(Level.DEBUG, "TESTING FAOUR CONFIG");
         // Ok so, this part may be hard to grasp but basically, just add your structure to this to
         // prevent any sort of crash or issue with other mod's custom ChunkGenerators. If they use
@@ -43,5 +45,6 @@ public class ModConfiguredStructures {
         // the restart but honestly, superflat is really buggy and shouldn't be your main focus in my opinion.
 
         FlatGenerationSettings.STRUCTURES.put(ModStructures.GREEK_CAMP.get(), CONFIGURED_GREEK_CAMP);
+        FlatGenerationSettings.STRUCTURES.put(ModStructures.LABYRINTH_CHUNK.get(), CONFIGURED_LABYRINTH_CHUNK);
     }
 }

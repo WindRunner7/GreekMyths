@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "greekmyths:tin_ingot"
+    },
+    {
+      "item": "greekmyths:copper_ingot"
+    }
+  ],
+  "result": {
+    "item": "greekmyths:bronze_ingot"
+  }
+}

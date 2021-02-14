@@ -56,6 +56,7 @@ public class ModStructures {
     }
 
     public static final RegistryObject<Structure<NoFeatureConfig>> GREEK_CAMP = registerStructure("greek_camp", () -> (new GreekCampStructure(NoFeatureConfig.field_236558_a_)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> LABYRINTH_CHUNK = registerStructure("labyrinth_chunk", () -> (new LabyrinthChunkStructure(NoFeatureConfig.field_236558_a_)));
 
 
     /**
@@ -72,6 +73,12 @@ public class ModStructures {
                 new StructureSeparationSettings(10 /* maximum distance apart in chunks between spawn attempts */,
                         5 /* minimum distance apart in chunks between spawn attempts */,
                         993857768 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
+                true);
+        setupMapSpacingAndLand(
+                LABYRINTH_CHUNK.get(), /* The instance of the structure */
+                new StructureSeparationSettings(1/* maximum distance apart in chunks between spawn attempts */,
+                        1 /* minimum distance apart in chunks between spawn attempts */,
+                        993857762 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
         GreekMyths.LOGGER.log(Level.DEBUG, "TESTING FAOUR SETUP");
         // Add more structures here and so on

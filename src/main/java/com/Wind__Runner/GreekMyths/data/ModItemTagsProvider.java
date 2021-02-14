@@ -29,12 +29,26 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(ModTags.Blocks.STORAGE_BLOCKS_COPPER, ModTags.Items.STORAGE_BLOCKS_COPPER);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 
+        copy(ModTags.Blocks.ORES_TIN, ModTags.Items.ORES_TIN);
+        copy(Tags.Blocks.ORES, Tags.Items.ORES);
+        copy(ModTags.Blocks.STORAGE_BLOCKS_TIN, ModTags.Items.STORAGE_BLOCKS_TIN);
+        copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+
+        copy(ModTags.Blocks.STORAGE_BLOCKS_BRONZE, ModTags.Items.STORAGE_BLOCKS_BRONZE);
+        copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+
         //Items
         getOrCreateBuilder(ModTags.Items.INGOT_SILVER).add(ModItems.SILVER_INGOT.get());
         getOrCreateBuilder(Tags.Items.INGOTS).addTag(ModTags.Items.INGOT_SILVER);
 
         getOrCreateBuilder(ModTags.Items.INGOT_COPPER).add(ModItems.COPPER_INGOT.get());
         getOrCreateBuilder(Tags.Items.INGOTS).addTag(ModTags.Items.INGOT_COPPER);
+
+        getOrCreateBuilder(ModTags.Items.INGOT_TIN).add(ModItems.TIN_INGOT.get());
+        getOrCreateBuilder(Tags.Items.INGOTS).addTag(ModTags.Items.INGOT_TIN);
+
+        getOrCreateBuilder(ModTags.Items.INGOT_BRONZE).add(ModItems.BRONZE_INGOT.get());
+        getOrCreateBuilder(Tags.Items.INGOTS).addTag(ModTags.Items.INGOT_BRONZE);
 
         //Armor
         getOrCreateBuilder(ModTags.Items.ARMOR_GREEK_HELMET).add(ModItems.GREEK_ARMOR_HELMET.get());

@@ -1,0 +1,43 @@
+{
+  "name": "greekmyths:greek_camp/tent_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "greekmyths:greek_camp/greek_camp_small_tent_green",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+          "weight": 1,
+          "element": {
+            "location": "greekmyths:greek_camp/greek_camp_tent_green_1",
+            "processors": "minecraft:empty",
+            "projection": "rigid",
+            "element_type": "minecraft:single_pool_element"
+          }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "greekmyths:greek_camp/greek_camp_small_tent_red",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+          "weight": 1,
+          "element": {
+            "location": "greekmyths:greek_camp/greek_camp_tent_red_1",
+            "processors": "minecraft:empty",
+            "projection": "rigid",
+            "element_type": "minecraft:single_pool_element"
+          }
+    }
+  ]
+}

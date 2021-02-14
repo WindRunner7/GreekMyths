@@ -12,6 +12,10 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -35,6 +39,7 @@ public class GreekMyths {
 
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "greekmyths";
+    public static final RegistryKey<World> LABYRINTH = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(MOD_ID, "labyrinth"));
     public static GreekMyths instance;
 
     public GreekMyths() {

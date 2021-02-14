@@ -22,13 +22,19 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         getOrCreateBuilder(Tags.Blocks.ORES).addTag(ModTags.Blocks.ORES_SILVER);
         getOrCreateBuilder(ModTags.Blocks.ORES_COPPER).add(ModBlocks.COPPER_ORE.get());
         getOrCreateBuilder(Tags.Blocks.ORES).addTag(ModTags.Blocks.ORES_COPPER);
+        getOrCreateBuilder(ModTags.Blocks.ORES_TIN).add(ModBlocks.TIN_ORE.get());
+        getOrCreateBuilder(Tags.Blocks.ORES).addTag(ModTags.Blocks.ORES_TIN);
 
         getOrCreateBuilder(ModTags.Blocks.STORAGE_BLOCKS_SILVER).add(ModBlocks.SILVER_BLOCK.get());
         getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.STORAGE_BLOCKS_SILVER);
         getOrCreateBuilder(ModTags.Blocks.STORAGE_BLOCKS_COPPER).add(ModBlocks.COPPER_BLOCK.get());
         getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.STORAGE_BLOCKS_COPPER);
+        getOrCreateBuilder(ModTags.Blocks.STORAGE_BLOCKS_TIN).add(ModBlocks.TIN_BLOCK.get());
+        getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.STORAGE_BLOCKS_TIN);
+        getOrCreateBuilder(ModTags.Blocks.STORAGE_BLOCKS_BRONZE).add(ModBlocks.BRONZE_BLOCK.get());
+        getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.STORAGE_BLOCKS_BRONZE);
 
-        //getOrCreateBuilder(ModTags.Blocks.FENCE_LIMESTONE_BRICK_WALL).add(ModBlocks.LIMESTONE_BRICK_WALL.get());
-        getOrCreateBuilder(BlockTags.WALLS).add(ModBlocks.LIMESTONE_BRICK_WALL.get());//.addTag(ModTags.Blocks.FENCE_LIMESTONE_BRICK_WALL);
+        getOrCreateBuilder(BlockTags.WALLS).add(ModBlocks.LIMESTONE_BRICK_WALL.get());
+        getOrCreateBuilder(BlockTags.WALLS).add(ModBlocks.MUD_BRICK_WALL.get());
     }
 }

@@ -1,0 +1,24 @@
+{
+  "type": "greekmyths:labyrinth",
+  "generator": {
+    "type": "minecraft:flat",
+    "seed": -2008904562,
+    "settings": {
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 128
+        }
+      ],
+      "structures": {
+        "structures": {
+          "greekmyths:labyrinth_chunk": {
+          "spacing": 2,
+          "separation": 1,
+          "salt": 10421550
+          }
+        }
+      }
+    }
+  }
+}

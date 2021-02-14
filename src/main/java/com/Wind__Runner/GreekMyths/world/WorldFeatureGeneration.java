@@ -22,9 +22,17 @@ public final class WorldFeatureGeneration {
                 new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
                         ModBlocks.SILVER_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(OreGenConfig.silver_ore_chance.get());
 
+        public static final ConfiguredFeature<?, ?> ORE_VEINS_LIMESTONE = Feature.ORE.withConfiguration(
+                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
+                        ModBlocks.LIMESTONE.get().getDefaultState(), 33)).range(80).square().func_242731_b(10);
+
         public static final ConfiguredFeature<?, ?> ORE_VEINS_COPPER = Feature.ORE.withConfiguration(
                 new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
                         ModBlocks.COPPER_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(OreGenConfig.copper_ore_chance.get());
+
+        public static final ConfiguredFeature<?, ?> ORE_VEINS_TIN = Feature.ORE.withConfiguration(
+                new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
+                        ModBlocks.TIN_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(OreGenConfig.tin_ore_chance.get());
     }
 
     private static void registerConfiguredFeature(String name, ConfiguredFeature<?, ?> configuredFeature) {
@@ -33,6 +41,9 @@ public final class WorldFeatureGeneration {
 
     public static void registerFeatures(RegistryEvent.Register<Feature<?>> event) {
         registerConfiguredFeature("silver_ore_veins", ModConfiguredFeatures.ORE_VEINS_SILVER);
+        registerConfiguredFeature("copper_ore_veins", ModConfiguredFeatures.ORE_VEINS_COPPER);
+        registerConfiguredFeature("tin_ore_veins", ModConfiguredFeatures.ORE_VEINS_TIN);
+        registerConfiguredFeature("lime_stone_ore_veins", ModConfiguredFeatures.ORE_VEINS_LIMESTONE);
     }
 
     @SubscribeEvent
@@ -50,6 +61,8 @@ public final class WorldFeatureGeneration {
     private static void addOverWorldOres(BiomeLoadingEvent biome) {
         biome.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_VEINS_SILVER);
         biome.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_VEINS_COPPER);
+        biome.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_VEINS_TIN);
+        biome.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ModConfiguredFeatures.ORE_VEINS_LIMESTONE);
     }
 
 

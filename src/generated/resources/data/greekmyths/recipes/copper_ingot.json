@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "greekmyths:copper_ore"
+  },
+  "result": "greekmyths:copper_ingot",
+  "experience": 0.35,
+  "cookingtime": 200
+}

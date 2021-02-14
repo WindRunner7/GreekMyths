@@ -17,13 +17,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.server.ServerWorld;
@@ -33,10 +34,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.UUID;
 
 public class GreekSoldierEntity extends CreatureEntity implements IAngerable {
+
+    private static final DataParameter<Integer> SOLDIER_VARIANT = EntityDataManager.createKey(GreekSoldierEntity.class, DataSerializers.VARINT);
 
     private int attackTimer;
     private static final RangedInteger field_234196_bu_ = TickRangeConverter.convertRange(20, 39);
@@ -49,6 +54,7 @@ public class GreekSoldierEntity extends CreatureEntity implements IAngerable {
 
 
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(2, new ReturnToVillageGoal(this, 0.6D, false));
@@ -88,6 +94,7 @@ public class GreekSoldierEntity extends CreatureEntity implements IAngerable {
 
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
+        compound.putInt("Variant", this.getVariant());
         this.writeAngerNBT(compound);
     }
 
@@ -146,4 +153,54 @@ public class GreekSoldierEntity extends CreatureEntity implements IAngerable {
         super.onDeath(cause);
     }
 
+
+    protected void registerData() {
+        super.registerData();
+        this.dataManager.register(SOLDIER_VARIANT, 0);
+    }
+
+    private void setVariant(int p_234242_1_) {
+        this.dataManager.set(SOLDIER_VARIANT, p_234242_1_);
+    }
+
+    private int getVariant() {
+        return this.dataManager.get(SOLDIER_VARIANT);
+    }
+
+    private void setRandomVariant(GreekSoldierEntity.SoldierVariants soldierVariants) {
+        this.setVariant(soldierVariants.getId() & 255);
+    }
+
+    public GreekSoldierEntity.SoldierVariants func_234239_eK_() {
+        return GreekSoldierEntity.SoldierVariants.func_234254_a_(this.getVariant() & 255);
+    }
+
+    @Nullable
+    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
+
+        this.setRandomVariant(Util.getRandomObject(GreekSoldierEntity.SoldierVariants.values(), this.rand));
+        return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
+    public enum SoldierVariants {
+        SHORT_HAIR(0),
+        LONG_HAIR(1);
+
+        private static final GreekSoldierEntity.SoldierVariants[] VALUES = Arrays.stream(values()).sorted(Comparator.comparingInt(GreekSoldierEntity.SoldierVariants::getId)).toArray((p_234255_0_) -> {
+            return new GreekSoldierEntity.SoldierVariants[p_234255_0_];
+        });
+        private final int id;
+
+        private SoldierVariants(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return this.id;
+        }
+
+        public static GreekSoldierEntity.SoldierVariants func_234254_a_(int p_234254_0_) {
+            return VALUES[p_234254_0_ % VALUES.length];
+        }
+    }
 }

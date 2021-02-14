@@ -10,7 +10,7 @@ import net.minecraft.util.SoundEvent;
 
 public enum ModArmorMaterial implements IArmorMaterial
 {
-    GreekArmor("greekarmor", 400, new int[] {8, 10, 9, 7}, 25, ModItems.SILVER_INGOT.get(), "item.armor.equip_iron", 0.0f, 0),
+    GreekArmor("greekarmor", 400, new int[] {2, 5, 6, 2}, 25, ModItems.BRONZE_INGOT.get(), "item.armor.equip_iron", 0.0f, 0),
     MythicArmor("mythicarmor", 400, new int[] {8, 10, 9, 7}, 25, ModItems.SILVER_INGOT.get(), "item.armor.equip_iron", 0.0f, 0);
 
     private static final int[] max_damage_array = new int[]{13, 15, 16, 11};

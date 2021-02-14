@@ -3,7 +3,12 @@
   "values": [
     "#forge:ores/silver",
     "#forge:ores/copper",
+    "#forge:ores/tin",
     "#forge:ores/silver",
-    "#forge:ores/copper"
+    "#forge:ores/copper",
+    "#forge:ores/tin",
+    "#forge:ores/silver",
+    "#forge:ores/copper",
+    "#forge:ores/tin"
   ]
 }

@@ -16,9 +16,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent("silver_block", modLoc("block/silver_block"));
         withExistingParent("silver_ore", modLoc("block/silver_ore"));
-
         withExistingParent("copper_block", modLoc("block/copper_block"));
         withExistingParent("copper_ore", modLoc("block/copper_ore"));
+        withExistingParent("tin_block", modLoc("block/tin_block"));
+        withExistingParent("tin_ore", modLoc("block/tin_ore"));
+        withExistingParent("bronze_block", modLoc("block/bronze_block"));
 
         withExistingParent("lime_stone", modLoc("block/lime_stone"));
         withExistingParent("lime_stone_bricks", modLoc("block/lime_stone_bricks"));
@@ -27,10 +29,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("lime_stone_brick_slab", modLoc("block/lime_stone_brick_slab"));
         wallInventory("lime_stone_brick_wall", modLoc("block/lime_stone_bricks"));
 
+        withExistingParent("mud_bricks", modLoc("block/mud_bricks"));
+        withExistingParent("mud_brick_stairs", modLoc("block/mud_brick_stairs"));
+        withExistingParent("mud_brick_slab", modLoc("block/mud_brick_slab"));
+        wallInventory("mud_brick_wall", modLoc("block/mud_bricks"));
+
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 
         builder(itemGenerated, "silver_ingot");
         builder(itemGenerated, "copper_ingot");
+        builder(itemGenerated, "tin_ingot");
+        builder(itemGenerated, "bronze_ingot");
 
         builder(itemGenerated, "greekarmor_helmet");
         builder(itemGenerated, "greekarmor_chestplate");
@@ -41,6 +50,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         builder(itemGenerated, "mythicarmor_chestplate");
         builder(itemGenerated, "mythicarmor_leggings");
         builder(itemGenerated, "mythicarmor_boots");
+
+        builder(itemGenerated, "labyrinth_key");
     }
 
     private ItemModelBuilder builder(ModelFile itemGenerated, String name) {

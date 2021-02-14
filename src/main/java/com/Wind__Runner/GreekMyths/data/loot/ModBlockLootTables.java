@@ -30,12 +30,22 @@ public class ModBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(ModBlocks.SILVER_BLOCK.get());
         registerDropSelfLootTable(ModBlocks.COPPER_BLOCK.get());
         registerDropSelfLootTable(ModBlocks.COPPER_ORE.get());
+        registerDropSelfLootTable(ModBlocks.TIN_BLOCK.get());
+        registerDropSelfLootTable(ModBlocks.TIN_ORE.get());
+        registerDropSelfLootTable(ModBlocks.BRONZE_BLOCK.get());
+
+
         registerDropSelfLootTable(ModBlocks.LIMESTONE.get());
         registerDropSelfLootTable(ModBlocks.LIMESTONE_BRICKS.get());
         registerDropSelfLootTable(ModBlocks.LIMESTONE_PILLAR.get());
         registerDropSelfLootTable(ModBlocks.LIMESTONE_BRICK_STAIRS.get());
         registerDropSelfLootTable(ModBlocks.LIMESTONE_BRICK_WALL.get());
         registerDropSelfLootTable(ModBlocks.LIMESTONE_BRICK_SLAB.get());
+
+        registerDropSelfLootTable(ModBlocks.MUD_BRICKS.get());
+        registerDropSelfLootTable(ModBlocks.MUD_BRICK_STAIRS.get());
+        registerDropSelfLootTable(ModBlocks.MUD_BRICK_WALL.get());
+        registerDropSelfLootTable(ModBlocks.MUD_BRICK_SLAB.get());
     }
 
     @Override
